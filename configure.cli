@@ -1,0 +1,11 @@
+module add --name=org.reproducer.module-one --absolute-resources=${base_dir}/Library-common/target/Library-common-1.0.jar:${base_dir}/Library-1/target/Library-1-1.0.jar
+module add --name=org.reproducer.module-two --absolute-resources=${base_dir}/Library-common/target/Library-common-1.0.jar:${base_dir}/Library-2/target/Library-2-1.0.jar
+
+/subsystem=ee:list-add(name=global-modules,value={name=org.reproducer.module-one})
+
+/subsystem=ee:list-add(name=global-modules,value={name=org.reproducer.module-two})
+
+shutdown --restart
+
+deploy ${base_dir}/web-app-1/target/web-app-1-1.0.war --force
+deploy ${base_dir}/web-app-2/target/web-app-2-1.0.war --force
