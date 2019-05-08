@@ -1,5 +1,6 @@
-module add --name=org.reproducer.module-one --absolute-resources=${base_dir}/Library-common/target/Library-common-1.0.jar:${base_dir}/Library-1/target/Library-1-1.0.jar
-module add --name=org.reproducer.module-two --absolute-resources=${base_dir}/Library-common/target/Library-common-1.0.jar:${base_dir}/Library-2/target/Library-2-1.0.jar
+module add --name=org.reproducer.module-three --absolute-resources=${base_dir}/Library-common/target/Library-common-1.0.jar
+module add --name=org.reproducer.module-one --absolute-resources=${base_dir}/Library-1/target/Library-1-1.0.jar --export-dependencies=org.reproducer.module-three
+module add --name=org.reproducer.module-two --absolute-resources=${base_dir}/Library-2/target/Library-2-1.0.jar --export-dependencies=org.reproducer.module-three
 
 /subsystem=ee:list-add(name=global-modules,value={name=org.reproducer.module-one})
 
